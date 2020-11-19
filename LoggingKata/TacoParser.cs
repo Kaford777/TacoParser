@@ -12,6 +12,8 @@
             logger.LogInfo("Begin parsing");
 
             // Take your line and use line.Split(',') to split it up into an array of strings, separated by the char ','
+            // will look like this in an array { "34.07345", "-84.03434", "Taco Bell Acwort..."}
+
             var cells = line.Split(',');
 
             // If your array.Length is less than 3, something went wrong
@@ -23,22 +25,40 @@
             }
 
             // grab the latitude from your array at index 0
-            // grab the longitude from your array at index 1
-            // grab the name from your array at index 2
+            var latitude = double.Parse(cells[0]);
 
-            // Your going to need to parse your string as a `double`
+
+            // grab the longitude from your array at index 1
+            var longitude = double.Parse(cells[1]);
+
+            // grab the name from your array at index 2
+            var name = cells[2];
+
+            //DONE Your going to need to parse your string as a `double`
             // which is similar to parsing a string as an `int`
+
 
             // You'll need to create a TacoBell class
             // that conforms to ITrackable
 
             // Then, you'll need an instance of the TacoBell class
             // With the name and point set correctly
+            var location = new Point();
+            location.Latitude = latitude;
+            location.Longitude = longitude;
+
+            var tacoBell = new TacoBell()
+            {
+                Name = name,
+                Location = location
+            };
+
+
 
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
 
-            return null;
+            return tacoBell;
         }
     }
 }
